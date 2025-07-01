@@ -1,0 +1,19 @@
+name: CI/CD Dockerized Pipeline
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  docker-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build Docker image
+        run: docker build -t ci-cd-demo-dockerized .
+
+      - name: Run container to execute deploy logic
+        run: docker run ci-cd-demo-dockerized
