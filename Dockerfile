@@ -1,14 +1,7 @@
-FROM ubuntu:20.04
-
-RUN apt-get update && apt-get install -y \
-
-    ansible \
-
-    shellcheck \
-
-    bash \
-
-    && rm -rf /var/lib/apt/lists/*
+FROM python:3.10-slim
 
 WORKDIR /app
-COPY . /app
+
+COPY . .
+
+CMD ["python3", "-m", "http.server", "8080"]
