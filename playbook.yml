@@ -1,0 +1,8 @@
+---
+- name: Simulated deployment using Ansible
+  hosts: localhost
+  tasks:
+    - name: Ensure dummy file exists
+      file:
+        path: /tmp/deployment-successful.txt
+        state: touch
