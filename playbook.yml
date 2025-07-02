@@ -1,40 +1,11 @@
-#<<<<<<< HEAD
 ---
 - name: Simulated deployment using Ansible
   hosts: localhost
+  connection: local
+  gather_facts: false
+
   tasks:
     - name: Ensure dummy file exists
       file:
         path: /tmp/deployment-successful.txt
         state: touch
-#=======
-#- name: Simulated deployment using Ansible
-#  hosts: localhost
-#  connection: local
-#  gather_facts: false
-
-#  tasks:
-#    - name: Ensure dummy file exists
-#      file:
-#        path: /tmp/deployment-successful.txt
-#        state: touch
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: ci-demo
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: ci-demo
-  template:
-    metadata:
-      labels:
-        app: ci-demo
-    spec:
-      containers:
-      - name: ci-demo
-        image: ci-demo:latest
-        imagePullPolicy: Never
-
-#>>>>>>> 8bad041 (Primer commit para activar CI/CD)
