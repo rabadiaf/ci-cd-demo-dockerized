@@ -9,3 +9,6 @@
       file:
         path: /tmp/deployment-successful.txt
         state: touch
+
+    - name: Apply Kubernetes manifest using kubectl
+      command: kubectl apply -f /app/deployment.yaml
