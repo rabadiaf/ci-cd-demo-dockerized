@@ -26,8 +26,8 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/ci-demo:latest .
+        docker build -t rabadiaf/ci-demo:latest .
 
-    - name: Push image to Docker Hub
+    - name: Push Docker image
       run: |
-        docker push ${{ secrets.DOCKER_USERNAME }}/ci-demo:latest
+        docker push rabadiaf/ci-demo:latest
