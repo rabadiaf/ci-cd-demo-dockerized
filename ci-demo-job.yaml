@@ -1,0 +1,14 @@
+# ci-demo-job.yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ci-demo-job
+spec:
+  template:
+    spec:
+      serviceAccountName: ci-demo-sa
+      containers:
+      - name: ci-demo
+        image: rabadiaf/ci-demo:latest
+        imagePullPolicy: Always
+      restartPolicy: Never

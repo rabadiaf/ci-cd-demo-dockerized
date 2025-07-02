@@ -1,0 +1,14 @@
+---
+- name: Simulated deployment using Ansible
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Ensure dummy file exists
+      file:
+        path: /tmp/deployment-successful.txt
+        state: touch
+
+    - name: Apply Kubernetes manifest using kubectl
+      command: kubectl apply -f /app/deployment.yaml

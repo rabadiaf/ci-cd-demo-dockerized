@@ -15,6 +15,5 @@ spec:
       containers:
       - name: ci-demo
         image: rabadiaf/ci-demo:latest
-        imagePullPolicy: Always
         ports:
         - containerPort: 8080
