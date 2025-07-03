@@ -15,5 +15,5 @@ jobs:
       - name: Pull  Docker image
         run: docker pull rabadiaf/ci-demo:latest
 
-      - name: Run container to execute deploy logic
+      - name: Run container to execute deploy logic.
         run: docker run --rm rabadiaf/ci-demo:latest
