@@ -16,4 +16,4 @@ jobs:
         run: docker build -t ci-demo:latest .
 
       - name: Run container to execute deploy logic
-        run: docker run ci-cd-demo-dockerized
+        run: docker run ci-demo:latest
