@@ -15,5 +15,6 @@ spec:
       containers:
       - name: ci-demo
         image: rabadiaf/ci-demo:latest
+        command: ["tail", "-f", "/dev/null"]  
         ports:
         - containerPort: 8080

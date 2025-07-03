@@ -11,4 +11,19 @@
         state: touch
 
     - name: Apply Kubernetes manifest using kubectl
-      command: kubectl apply -f /app/deployment.yaml
+      command: kubectl apply -f /home/rabadiaf/ci-cd-demo-dockerized/deployment.yaml
+      register: deploy_result
+      failed_when: deploy_result.rc != 0
+
+    - name: Wait for deployment rollout to finish
+      command: kubectl rollout status deployment/ci-demo --timeout=60s
+      register: rollout_result
+      failed_when: rollout_result.rc != 0
+      retries: 5
+      delay: 5
+      until: rollout_result.rc == 0
+
+    - name: Rollback deployment if rollout failed
+      command: kubectl rollout undo deployment/ci-demo
+      when: rollout_result.rc != 0
+        
