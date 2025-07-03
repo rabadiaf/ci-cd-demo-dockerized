@@ -11,7 +11,7 @@
         state: touch
 
     - name: Apply Kubernetes manifest using kubectl
-      command: kubectl apply -f /home/rabadiaf/ci-cd-demo-dockerized/deployment.yaml
+      command: kubectl apply -f /app/deployment.yaml
       register: deploy_result
       failed_when: deploy_result.rc != 0
 
