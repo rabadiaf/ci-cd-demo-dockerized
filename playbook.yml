@@ -11,7 +11,7 @@
         state: touch
 
     - name: Apply Kubernetes manifest using kubectl
-      command: kubectl apply --validate=flase -f /app/deployment.yaml #ingore validation(not for production enviroment)
+      command: kubectl apply --validate=false -f /app/deployment.yaml #ingore validation(not for production enviroment)
       register: deploy_result
       failed_when: deploy_result.rc != 0
 
