@@ -1,4 +1,4 @@
-name: Docker CI/CD
+name: Docker CI Demo
 
 on:
   push:
@@ -8,10 +8,6 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
-    env:
-      DOCKER_USER: ${{ secrets.DOCKER_USERNAME }}
-      DOCKER_PASS: ${{ secrets.DOCKER_PASSWORD }}
 
     steps:
       - name: Checkout code
