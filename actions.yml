@@ -1,4 +1,0 @@
-- name: Check Docker secrets
-  run: |
-    echo "DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}"
-    echo "DOCKER_PASSWORD length=${{ secrets.DOCKER_PASSWORD != '' }}"

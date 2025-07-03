@@ -10,7 +10,7 @@
 
     - name: Apply Kubernetes manifest using kubectl
       shell: |
-        kubectl apply --validate=false -f /app/deployment.yaml
+        kubectl apply --validate=false -f /app/k8s/
       register: kubectl_output
       failed_when: kubectl_output.rc != 0
       ignore_errors: false
