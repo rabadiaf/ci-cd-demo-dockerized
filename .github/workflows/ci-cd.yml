@@ -34,6 +34,6 @@ jobs:
           push: true
           tags: rabadiaf/ci-demo:latest
 
-      - name: Run container and execute Ansible playbook.
+      - name: Run container and execute Ansible playbook
         run: |
           docker run --rm rabadiaf/ci-demo:latest /app/entrypoint.sh
