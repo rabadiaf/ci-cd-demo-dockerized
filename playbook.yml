@@ -2,28 +2,15 @@
 - name: Simulated deployment using Ansible
   hosts: localhost
   connection: local
-  gather_facts: false
-
   tasks:
     - name: Ensure dummy file exists
       file:
-        path: /tmp/deployment-successful.txt
+        path: /tmp/deployed.txt
         state: touch
 
     - name: Apply Kubernetes manifest using kubectl
-      command: kubectl apply --validate=false -f /app/deployment.yaml #ingore validation(not for production enviroment)
-      register: deploy_result
-      failed_when: deploy_result.rc != 0
-
-    - name: Wait for deployment rollout to finish
-      command: kubectl rollout status deployment/ci-demo --timeout=60s
-      register: rollout_result
-      failed_when: rollout_result.rc != 0
-      retries: 5
-      delay: 5
-      until: rollout_result.rc == 0
-
-    - name: Rollback deployment if rollout failed
-      command: kubectl rollout undo deployment/ci-demo
-      when: rollout_result.rc != 0
-        
+      shell: |
+        kubectl apply --validate=false -f /app/deployment.yaml
+      register: kubectl_output
+      failed_when: kubectl_output.rc != 0
+      ignore_errors: false

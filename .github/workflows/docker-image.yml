@@ -23,3 +23,6 @@ jobs:
 
     - name: Push Docker image
       run: docker push rabadiaf/ci-demo:latest
+
+    - name: Run container and simulate deployment
+      run: docker run --rm -e CI=true rabadiaf/ci-demo:latest /app/entrypoint.sh

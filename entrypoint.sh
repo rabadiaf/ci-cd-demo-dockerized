@@ -4,10 +4,14 @@ set -e
 echo "Deploying application..."
 echo "Running inside Docker container..."
 
+if [ "$CI" = "true" ]; then
+  echo "CI mode detected: Simulating deployment"
+  # Simulación: crear un archivo dummy para simular que algo cambió
+  touch /app/deploy-simulated.txt
+  echo "Deployment simulation completed."
+else
+  echo "Running real deployment..."
 
-# Ejecuta el playbook
-#ansible-playbook /home/rabadiaf/ci-cd-demo-dockerized/playbook.yml
-ansible-playbook /app/playbook.yml
-
-echo "✅ Deployment finished."
-exec "$@"
+  # Aquí va tu lógica real para aplicar manifests, por ejemplo:
+  kubectl apply --validate=false -f /app/deployment.yaml
+fi

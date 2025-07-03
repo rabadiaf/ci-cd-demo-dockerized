@@ -30,4 +30,4 @@ jobs:
           tags: rabadiaf/ci-demo:latest
 
       - name: 🧪 Run simulated deploy (no kubectl)
-        run: docker run --rm rabadiaf/ci-demo:latest echo "✔️ Container ran successfully"
+        run: docker run --rm -e CI=true rabadiaf/ci-demo:latest /app/entrypoint.sh
