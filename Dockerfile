@@ -10,7 +10,8 @@ RUN curl -LO https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubect
 
 WORKDIR /app
 
-COPY k8s/deployment.yaml /app/deployment.yaml
+COPY entrypoint.sh playbook.yml /app/
+COPY k8s/ /app/
 
 RUN chmod +x /app/entrypoint.sh
 
