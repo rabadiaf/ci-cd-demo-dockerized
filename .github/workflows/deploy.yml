@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Build Docker image
-        run: docker build -t ci-cd-demo-dockerized .
+        run: docker build -t ci-demo:latest
 
       - name: Run container to execute deploy logic
         run: docker run ci-cd-demo-dockerized
