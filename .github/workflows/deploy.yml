@@ -12,8 +12,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Build Docker image
-        run: docker build -t ci-demo:latest .
+      - name: Pull  Docker image
+        run: docker pull rabadiaf/ci-demo:latest
 
       - name: Run container to execute deploy logic
-        run: docker run ci-demo:latest
+        run: docker run --rm rabadiaf/ci-demo:latest
