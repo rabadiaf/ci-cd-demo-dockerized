@@ -16,4 +16,4 @@ jobs:
         run: docker build -t ci-cd-demo:latest
 
       - name: Run container to execute deploy logic
-        run: docker run --rm rabadiaf/ci-demo:latest /app/entrypoint.sh
+        run: docker run --rm -e CI=true rabadiaf/ci-demo:latest /app/entrypoint.sh
