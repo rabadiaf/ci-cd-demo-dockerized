@@ -21,5 +21,5 @@ jobs:
     - name: Build Docker image
       run: docker build -t rabadiaf/ci-demo:latest .
 
-    - name: Push Docker image.
+    - name: Push Docker image
       run: docker push rabadiaf/ci-demo:latest
