@@ -3,6 +3,7 @@
   hosts: localhost
   connection: local
   gather_facts: false
+
   tasks:
     - name: Ensure dummy file exists
       file:
@@ -11,7 +12,7 @@
 
     - name: Simulate or apply kubectl
       shell: |
-        if [ "{{ simulate | default('false') }}" == "true" ]; then
+        if [ "{{ simulate | default('false') }}" = "true" ]; then
           echo "Simulating kubectl apply for CI"
           exit 0
         else
