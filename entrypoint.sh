@@ -1,12 +1,12 @@
 #!/bin/bash
-set -e
 
 echo "Deploying application..."
 echo "Running inside Docker container..."
 
-# Ejecuta el playbook
-#ansible-playbook /home/rabadiaf/ci-cd-demo-dockerized/playbook.yml
-ansible-playbook /app/playbook.yml
-
-echo "✅ Deployment finished."
-exec "$@"
+if [ "$CI" = "true" ]; then
+  echo "⚠️ CI environment detected — skipping real kubectl apply"
+  ansible-playbook /app/playbook.yml --extra-vars "simulate=true"
+else
+  echo "✅ Local environment — applying manifests with kubectl"
+  ansible-playbook /app/playbook.yml
+fi
