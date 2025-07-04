@@ -11,7 +11,7 @@ RUN curl -LO https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubect
 WORKDIR /app
 
 # Copia entrypoint.sh y el playbook
-COPY entrypoint.sh playbook.yml /app/
+COPY entrypoint.sh playbook.yml k8s/deployment.yaml /app/
 
 # Copia todos los manifiestos de Kubernetes
 COPY k8s/ /app/
