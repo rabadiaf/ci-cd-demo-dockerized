@@ -1,3 +1,8 @@
+on:
+  push:
+    branches:
+      - main
+
 jobs:
   docker-deploy:
     runs-on: ubuntu-latest
