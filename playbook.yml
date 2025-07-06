@@ -1,10 +1,22 @@
 ---
-- name: Deploy dummy pod to Kubernetes
+- name: Simulated deployment using Ansible
   hosts: localhost
   connection: local
+  gather_facts: false
+
   tasks:
-    - name: Apply Kubernetes manifest using kubectl
+    - name: Ensure dummy file exists
+      file:
+        path: /tmp/deployed.txt
+        state: touch
+
+    - name: Simulate or apply kubectl
       shell: |
-        kubectl apply --validate=false -f /app/deployment.yaml
-      register: result
-      failed_when: result.rc != 0
+        if [ "{{ simulate | default('false') }}" = "true" ]; then
+          echo "Simulating kubectl apply for CI"
+          exit 0
+        else
+          kubectl apply --validate=false -f /app/deployment.yaml
+        fi
+      register: kubectl_output
+      failed_when: kubectl_output.rc != 0

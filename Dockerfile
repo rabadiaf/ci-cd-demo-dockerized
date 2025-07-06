@@ -9,11 +9,7 @@ RUN curl -LO https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubect
     rm kubectl
 
 WORKDIR /app
-
-COPY deployment.yaml playbook.yml entrypoint.sh kubeconfig.embedded.yaml /app/
-
+COPY entrypoint.sh playbook.yml k8s/deployment.yaml /app/
 RUN chmod +x /app/entrypoint.sh
-
-ENV KUBECONFIG=/app/kubeconfig.embedded.yaml
 
 CMD ["/app/entrypoint.sh"]

@@ -1,18 +1,8 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
   name: dummy-pod
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: dummy
-  template:
-    metadata:
-      labels:
-        app: dummy
-    spec:
-      containers:
-      - name: dummy
-        image: busybox
-        command: ["sleep", "3600"]
+  containers:
+  - name: nginx
+    image: nginx
