@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Build Docker image
-        run: docker build -t ci-cd-demo:latest .
+        run: docker build -t rabadiaf/ci-demo:latest .
 
       - name: Run container to execute deploy logic
         run: docker run --rm -e CI=true rabadiaf/ci-demo:latest /app/entrypoint.sh
