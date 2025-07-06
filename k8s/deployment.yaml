@@ -1,8 +1,23 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: dummy-pod
+  name: ci-demo_d_hub
+  labels:
+    app: ci-demo
 spec:
-  containers:
-  - name: nginx
-    image: nginx
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ci-demo
+  template:
+    metadata:
+      labels:
+        app: ci-demo
+    spec:
+      containers:
+        - name: ci-demo
+          image: rabadiaf/ci-demo:latest
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always
+
