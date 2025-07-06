@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   name: ci-demo_d_hub
   labels:
-    app: ci-demo
+    app: ci-demo_d_hub
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ci-demo
+      app: ci-demo_d_hub
   template:
     metadata:
       labels:
-        app: ci-demo
+        app: ci-demo_d_hub
     spec:
       containers:
-        - name: ci-demo
+        - name: ci-demo_d_hub
           image: rabadiaf/ci-demo:latest
           ports:
             - containerPort: 80
